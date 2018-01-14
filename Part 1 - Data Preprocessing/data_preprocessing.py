@@ -22,7 +22,7 @@ dataset = pd.read_csv('Data.csv')
 # selects certain columns from dataset
 # to select all rows/columns, use ':'
 X = dataset.iloc[:, :-1].values
-Y = dataset.iloc[:, 3].values
+y = dataset.iloc[:, -1].values
 
 # Handle missing data (NaN)
 # common practice: use the mean of other existing data for that variable.
@@ -35,14 +35,14 @@ X[:, 1:3] = imputer.transform(X[:, 1:3])
 # Categorical Data: Encode string data to numbers
 labelencoder_X = LabelEncoder()
 X[:, 0] = labelencoder_X.fit_transform(X[:, 0])
-labelencoder_Y = LabelEncoder()
-Y = labelencoder_Y.fit_transform(Y)
+labelencoder_y = LabelEncoder()
+y = labelencoder_y.fit_transform(y)
 # Separate categories into their own columns
 onehotencoder_x = OneHotEncoder(categorical_features = [0])
 X = onehotencoder_x.fit_transform(X).toarray()
 
 # Split dataset to into Training and Test Sets
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state = 0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 # To get the same values as the lecture's, we need to use the same random seed (random_state).
 
 # Feature Scaling

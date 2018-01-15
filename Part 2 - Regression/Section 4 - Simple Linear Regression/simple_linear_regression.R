@@ -1,21 +1,21 @@
 # DATA PREPROCESSING START
 #
-dataset = read.csv('Salary_Data.csv')
+dataset <- read.csv('Salary_Data.csv')
 library(caTools)
 set.seed(423)
-split = sample.split(dataset$Salary, SplitRatio = 2/3)
-training_set = subset(dataset, split == TRUE)
-test_set = subset(dataset, split == FALSE)
+split <- sample.split(dataset$Salary, SplitRatio = 2/3)
+training_set <- subset(dataset, split == TRUE)
+test_set <- subset(dataset, split == FALSE)
 #
 # DATA PREPROCESSING END
 
 # Simple Linear Regression
 # Fit Simple Linear Regression to Training Set
-regressor = lm(formula = Salary ~ YearsExperience,
+regressor <- lm(formula = Salary ~ YearsExperience,
                data = training_set)
 
 # Predict Test Set Results
-y_pred = predict(regressor, newdata = test_set)
+y_pred <- predict(regressor, newdata = test_set)
 
 # Visualize Simple Linear Regression Model
 # You need the package "ggplot2" for this.

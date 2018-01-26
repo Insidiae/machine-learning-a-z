@@ -8,7 +8,7 @@ from sklearn.cross_validation import train_test_split
 # from sklearn.preprocessing import StandardScaler
 
 dataset = pd.read_csv('Data.csv')
-X = dataset.iloc[:, :-1].values
+X = dataset.iloc[:, 1:-1].values
 y = dataset.iloc[:, -1].values
 
 """imputer = Imputer(missing_values='NaN', strategy='mean', axis=0)
@@ -39,7 +39,8 @@ X_grid = np.arange(min(X), max(X), 0.1)
 X_grid = X_grid.reshape(len(X_grid), 1)
 
 plt.scatter(X, y, color="red")
-pred_graph, = plt.plot(X_grid, regressor.predict(X_grid), color="blue")
+pred_graph, = plt.plot(X_grid, regressor.predict(X_grid), color="blue",
+                       label = "Insert Plot Label Here")
 plt.title("Insert Title Here")
 plt.legend(handles=[pred_graph])
 plt.xlabel("Insert Label Here")

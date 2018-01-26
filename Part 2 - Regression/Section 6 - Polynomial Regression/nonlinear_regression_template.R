@@ -31,7 +31,6 @@ dataset <- read.csv('Position_Salaries.csv')
 # Fit Regression model to dataset
 regressor <- .....
 
-# Smoothen Regression Model Curve
 # Smoothen Polynomial Model Curve
 x_grid <- seq(min(dataset$Level), max(dataset$Level), 0.1)
 x_grid_poly <- data.frame(Level = x_grid,
